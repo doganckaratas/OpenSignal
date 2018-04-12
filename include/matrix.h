@@ -1,8 +1,8 @@
 #ifndef __MATRIX_H
 #define __MATRIX_H
 
-Matrix_t* matrix(void); 
-int 	matrix_init(Matrix_t *m, int rows, int cols);
+Matrix_t* matrix_new(void);
+int 	matrix_size(Matrix_t *m, int rows, int cols);
 int 	matrix_set_cell(Matrix_t *m, int rows, int cols, double data);
 int	matrix_get_cell(Matrix_t *m, int rows, int cols, double *data);
 int 	matrix_zeros(Matrix_t *m);

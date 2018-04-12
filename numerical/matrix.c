@@ -5,12 +5,12 @@
 #include "common.h"
 #include "matrix.h"
 
-Matrix_t* matrix(void)
+Matrix_t* matrix_new(void)
 {
 	return (Matrix_t *) malloc(sizeof(Matrix_t));
 }
 
-int matrix_init(Matrix_t *m, int rows, int cols)
+int matrix_size(Matrix_t *m, int rows, int cols)
 {
 	if (m == NULL) {
 		return -1;
@@ -32,12 +32,12 @@ int matrix_define(Matrix_t *m, char* data)
 }
 */
 
-int matrix_set_cell(Matrix_t *m, int rows, int cols, double data) 
+int matrix_set_cell(Matrix_t *m, int rows, int cols, double data)
 {
 	if (m->data == NULL || m == NULL || rows <= 0 || cols <= 0) {
 		return -1;
 	}
-	
+
 	*(m->data + ((rows - 1) * m->cols + (cols - 1))) = data;
 	return 0;
 }
@@ -58,10 +58,10 @@ int matrix_zeros(Matrix_t *m)
 	if (m->data == NULL || m == NULL) {
 		return -1;
 	}
-		
+
 	for (i = 1; i <= m->rows; i++) {
 		for (j = 1; j <= m->cols; j++) {
-			matrix_set_cell(m, i, j, 0);	
+			matrix_set_cell(m, i, j, 0);
 		}
 	}
 	return 0;
@@ -110,16 +110,14 @@ int matrix_copy(Matrix_t *m1, Matrix_t *m2)
 	if (m1->data == NULL || m1 == NULL) {
 		return -1;
 	}
-	
+
 	if (m2 == NULL) {
-		m2 = matrix();
-	}
-	
-	if (m2->data == NULL) {
-		matrix_init(m2, m1->rows, m1->cols);
+		m2 = matrix_new();
 	}
 
-	memcpy(m2->data, m1->data, sizeof(double) * m1->rows * m1->cols);
+	matrix_size(m2, m1->rows, m1->cols);
+	memcpy(m2->data, m1->data, sizeof(double) * (size_t)(m1->rows * m1->cols));
+
 	if (m2->data == NULL) {
 		return -1;
 	}
@@ -138,16 +136,16 @@ int matrix_determinant(Matrix_t *m, double *result)
 
 }
 */
-int matrix_transpose(Matrix_t *m) 
+int matrix_transpose(Matrix_t *m)
 {
 	int i = 0, j = 0;
 	double tmp = 0;
-	Matrix_t *m_tmp = matrix();
+	Matrix_t *m_tmp = matrix_new();
 	if (m->data == NULL || m == NULL) {
 		return -1;
 	}
-	
-	matrix_init(m_tmp, m->cols, m->rows);
+
+	matrix_size(m_tmp, m->cols, m->rows);
 
 	for (i = 1; i <= m->rows; i++) {
 		for(j = 1; j <= m->cols; j++) {
@@ -196,7 +194,7 @@ int matrix_print(Matrix_t *m)
 int matrix_compare(Matrix_t *m1, Matrix_t *m2)
 {
 	int i = 0;
-	if (m1->data == NULL || m1 == NULL || 
+	if (m1->data == NULL || m1 == NULL ||
 		m2->data == NULL || m2 == NULL) {
 		return -1;
 	}
