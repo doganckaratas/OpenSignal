@@ -2,8 +2,8 @@
 
 ## Important Notice
 
-This Repository is intended to use for Active Development, so access is restricted for internal development. 
-For contribution and forking, please use project's open source Github fork 
+This Repository is intended to use for Active Development and Repo Synchronization purposes, so access is restricted for internal development. 
+For contribution and forking, please use project's open source main Github fork 
 
 ## Maintainer
 
