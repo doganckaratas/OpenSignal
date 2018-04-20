@@ -10,48 +10,66 @@ Matrix_t* matrix_new(void)
 	return (Matrix_t *) malloc(sizeof(Matrix_t));
 }
 
-int matrix_size(Matrix_t *m, int rows, int cols)
+int matrix_size(Matrix_t *m, int row, int col)
 {
-	if (m == NULL) {
+	if (m == NULL || row <= 0 || col <= 0) {
 		return -1;
 	}
-	m->rows = rows;
-	m->cols = cols;
-	m->data = malloc(sizeof(double) * rows * cols + 1);
+	m->rows = row;
+	m->cols = col;
+	m->data = malloc(sizeof(double) * row * col + 1);
 	if (m->data == NULL) {
 		return -1;
 	}
 	matrix_zeros(m);
 	return 0;
 }
-
-/*
+#if 0
 int matrix_define(Matrix_t *m, char* data)
 {
 	matrix_define(m, "[1 2 3; 4 5 6; 7 8 9 ]");
 }
-*/
-
-int matrix_set_cell(Matrix_t *m, int rows, int cols, double data)
+#endif
+int matrix_set_cell(Matrix_t *m, int row, int col, double data)
 {
-	if (m->data == NULL || m == NULL || rows <= 0 || cols <= 0) {
+	if (m->data == NULL || m == NULL || row <= 0 || col <= 0) {
 		return -1;
 	}
 
-	*(m->data + ((rows - 1) * m->cols + (cols - 1))) = data;
+	*(m->data + ((row - 1) * m->cols + (col - 1))) = data;
 	return 0;
 }
 
-int matrix_get_cell(Matrix_t* m, int rows, int cols, double *data)
+int matrix_get_cell(Matrix_t* m, int row, int col, double *data)
 {
-	if (m->data == NULL || m == NULL) {
+	if (m->data == NULL || m == NULL || row <= 0 || col <= 0) {
 		return -1;
 	}
 
-	*data = *(m->data + ((rows - 1) * m->cols + (cols - 1)));
+	*data = *(m->data + ((row - 1) * m->cols + (col - 1)));
 	return 0;
 }
+#if 0
+int matrix_set_row(Matrix_t *m, int row, Vector_t *v)
+{
 
+}
+
+int matrix_set_col(Matrix_t *m, int col, Vector_t *v)
+{
+
+}
+
+int matrix_get_row(Matrix_t *m, int row, Vector_t *v)
+{
+
+}
+
+int matrix_get_col(Matrix_t *m, int col, Vector_t *v)
+{
+
+}
+#endif
 int matrix_zeros(Matrix_t *m)
 {
 	int i = 0, j = 0;
@@ -99,12 +117,12 @@ int matrix_identity(Matrix_t *m)
 	}
 	return 0;
 }
-/*
+#if 0
 int matrix_product(Matrix_t *m1, Matrix_t *m2)
 {
 
 }
-*/
+#endif
 int matrix_copy(Matrix_t *m1, Matrix_t *m2)
 {
 	if (m1->data == NULL || m1 == NULL) {
@@ -125,7 +143,7 @@ int matrix_copy(Matrix_t *m1, Matrix_t *m2)
 	return 0;
 }
 
-/*
+#if 0
 int matrix_inverse(Matrix_t *m)
 {
 
@@ -135,7 +153,12 @@ int matrix_determinant(Matrix_t *m, double *result)
 {
 
 }
-*/
+
+int matrix_echelon(Matrix_t *m)
+{
+	// for easier determinant operation
+}
+#endif
 int matrix_transpose(Matrix_t *m)
 {
 	int i = 0, j = 0;
@@ -157,7 +180,7 @@ int matrix_transpose(Matrix_t *m)
 	matrix_delete(m_tmp);
 	return 0;
 }
-/*
+#if 0
 int matrix_to_vector(Matrix_t *m, int orientation, int n, Vector_t *v)
 {
 
@@ -172,7 +195,7 @@ int matrix_eigenvectors(Matrix_t *m, ...)
 {
 
 }
-*/
+#endif
 
 int matrix_print(Matrix_t *m)
 {
