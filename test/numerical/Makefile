@@ -3,10 +3,10 @@
 # Dogan C. Karatas | 2018 | GNU GPL v3
 
 TARGET = test_numerical
-INSTALL = ../_install
+INSTALL = ../../_install
 CC = gcc
-CFLAGS = -I../include -g -Wall -Wextra -Werror $(TEST)
-LIBS = -lm -lnumerical -L../numerical
+CFLAGS = -I../../include -g -Wall -Wextra -Werror $(TEST)
+LIBS = -lm -lnumerical -L../../numerical
 
 SRCS = $(wildcard *.c)
 OBJS = $(SRCS:.c=.o)
@@ -17,7 +17,7 @@ TEST+=-DMATRIX_TEST
 #TEST+=-DMATRIX_BASIC_TEST
 #TEST+=-DMATRIX_COMPARE_TEST
 #TEST+=-DMATRIX_IDENTITY_TEST
-#TEST+=-DMATRIX_COPY_TEST
+TEST+=-DMATRIX_COPY_TEST
 #TEST+=-DMATRIX_DETERMINANT_TEST
 TEST+=-DMATRIX_TRANSPOSE_TEST
 
