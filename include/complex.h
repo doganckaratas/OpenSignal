@@ -1,3 +1,7 @@
+/* OpenSignal
+ * complex.h | complex.c header file
+ * Dogan C. Karatas | 2018 | GNU GPL v3
+ */
 #ifndef __COMPLEX_H
 #define __COMPLEX_H
 

@@ -1,3 +1,7 @@
+/* OpenSignal
+ * matrix.h | matrix.c header file
+ * Dogan C. Karatas | 2018 | GNU GPL v3
+ */
 #ifndef __MATRIX_H
 #define __MATRIX_H
 

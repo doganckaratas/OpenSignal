@@ -1,3 +1,7 @@
+/* OpenSignal
+ * vector.h | vector.c header file
+ * Dogan C. Karatas | 2018 | GNU GPL v3
+ */
 #ifndef __VECTOR_H
 #define __VECTOR_H
 

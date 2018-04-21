@@ -1,3 +1,7 @@
+/* OpenSignal
+ * vector.c | Vector functions
+ * Dogan C. Karatas | 2018 | GNU GPL v3
+ */
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -62,7 +66,7 @@ int     vector_delete(Vector_t *v)
         }
 
         free(v->data);
-        v->data == NULL;
+        v->data = NULL;
         free(v);
         v = NULL;
         return 0;

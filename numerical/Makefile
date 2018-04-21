@@ -1,25 +1,33 @@
-TARGET=numerical
-CC=gcc
-#TEST+=-DCOMPLEX_TEST
-#TEST+=-DPOLAR_TEST
-TEST+=-DMATRIX_TEST
-TEST+=-DMATRIX_BASIC_TEST
-TEST+=-DMATRIX_COMPARE_TEST
-TEST+=-DMATRIX_IDENTITY_TEST
-TEST+=-DMATRIX_COPY_TEST
-TEST+=-DMATRIX_DETERMINANT_TEST
-TEST+=-DMATRIX_TRANSPOSE_TEST
-CFLAGS=-I../include -g -Wall -Werror ${TEST}
-LIBS=-lm
-SRCS:=$(wildcard *.c)
+# OpenSignal
+# Numerical Library Makefile
+# Dogan C. Karatas | 2018 | GNU GPL v3
 
-.PHONY: numerical clean
+TARGET = libnumerical.so
+INSTALL = ../_install
+CC = gcc
+CFLAGS = -I../include -g -Wall -Wextra -Werror -fpic
+LDFLAGS = -shared
 
-# for now it outputs as executable (-DTEST flag)
+SRCS = $(wildcard *.c)
+OBJS = $(SRCS:.c=.o)
 
-$(TARGET): $(SRCS)
-	$(CC) -o $@ $^ $(CFLAGS) $(LIBS)
+.PHONY: all
+all: ${TARGET}
 
-clean: 
-	rm -f $(TARGET)
+$(SRCS:.c=.d):%.d:%.c
+	$(CC) $(CFLAGS) -MM $< >$@
 
+$(TARGET): $(OBJS)
+	$(CC) -o $@ $^ $(LDFLAGS)
+
+-include $(SRCS:.c=.d)
+
+.PHONY: install
+install: all
+	$(shell if [ ! -d ${INSTALL} ];	then mkdir ${INSTALL}; fi;)
+	cp -f ${TARGET} ${INSTALL}/${TARGET}
+
+.PHONY: clean
+clean:
+	rm -f ${TARGET} ${OBJS} $(SRCS:.c=.d)
+	rm -f ./${INSTALL}/${TARGET}

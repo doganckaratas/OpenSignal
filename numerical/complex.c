@@ -1,5 +1,6 @@
-/*
- *
+/* OpenSignal
+ * complex.c | Complex number functions
+ * Dogan C. Karatas | 2018 | GNU GPL v3 
  */
 
 #include <stdio.h>
@@ -85,10 +86,10 @@ int complex_to_polar(Complex_t *c, Polar_t *p)
 	if (c == NULL || p == NULL) {
 		return -1;
 	}
-	
+
 	p->radius = sqrt(pow(complex_get_real(c), 2) + pow(complex_get_imag(c), 2));
 	p->angle = atan2(complex_get_imag(c), complex_get_real(c));
-	
+
 	return 0;
 }
 

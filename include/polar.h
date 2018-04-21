@@ -1,3 +1,7 @@
+/* OpenSignal
+ * polar.h | polar.c header file
+ * Dogan C. Karatas | 2018 | GNU GPL v3
+ */
 #ifndef __POLAR_H
 #define __POLAR_H
 

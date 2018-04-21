@@ -1,3 +1,7 @@
+/* OpenSignal
+ * common.h | Common numerical library structures
+ * Dogan C. Karatas | 2018 | GNU GPL v3
+ */
 #ifndef __COMMON_H
 #define __COMMON_H
 
@@ -15,9 +19,9 @@ typedef struct Matrix_s {
 	int rows; /* m */
 	int cols; /* n */
 	double *data;
-	/* union of different types, 
-	   and abstraction funcs of 
-	   these fields in .c file 
+	/* union of different types,
+	   and abstraction funcs of
+	   these fields in .c file
 	 */
 } Matrix_t;
 

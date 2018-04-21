@@ -1,7 +1,7 @@
-/*
- *
+/* OpenSignal
+ * polar.c | Polar number functions
+ * Dogan C. Karatas | 2018 | GNU GPL v3
  */
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
@@ -77,7 +77,7 @@ int polar_to_complex(Polar_t *p, Complex_t *c)
 	if (c == NULL || p == NULL) {
 		return -1;
 	}
-	
+
 	c->real = polar_get_radius(p) * cos(polar_get_angle(p));
 	c->imag = polar_get_radius(p) * sin(polar_get_angle(p));
 
