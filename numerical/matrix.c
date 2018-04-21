@@ -142,7 +142,6 @@ int matrix_copy(Matrix_t *m1, Matrix_t *m2)
 
 	return 0;
 }
-
 #if 0
 int matrix_inverse(Matrix_t *m)
 {
@@ -157,6 +156,7 @@ int matrix_determinant(Matrix_t *m, double *result)
 int matrix_echelon(Matrix_t *m)
 {
 	// for easier determinant operation
+	// needs vector operations
 }
 #endif
 int matrix_transpose(Matrix_t *m)
@@ -196,7 +196,6 @@ int matrix_eigenvectors(Matrix_t *m, ...)
 
 }
 #endif
-
 int matrix_print(Matrix_t *m)
 {
 	int i = 0, j = 0;
