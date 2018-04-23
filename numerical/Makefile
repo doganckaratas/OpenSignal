@@ -6,7 +6,7 @@ TARGET = libnumerical.so
 INSTALL = ../_install
 CC = gcc
 CFLAGS = -I../include -g -Wall -Wextra -Werror -fpic
-LDFLAGS = -shared
+LDFLAGS = -lm -shared
 
 SRCS = $(wildcard *.c)
 OBJS = $(SRCS:.c=.o)
