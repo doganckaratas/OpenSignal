@@ -15,7 +15,6 @@ all:
 install: all
 	$(MAKE) -C ./numerical install V=1
 	$(MAKE) -C ./test/numerical install V=1
-	export LD_LIBRARY_PATH=./${INSTALL}:${LD_LIBRARY_PATH}
 
 .PHONY: clean
 clean:
