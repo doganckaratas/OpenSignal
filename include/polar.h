@@ -5,8 +5,8 @@
 #ifndef __POLAR_H
 #define __POLAR_H
 
-Polar_t* polar(void);
-int	polar_init(Polar_t *p, double radius, double angle);
+Polar_t* polar_new(void);
+int	polar_set(Polar_t *p, double radius, double angle);
 double	polar_get_radius(Polar_t *p);
 double	polar_get_angle(Polar_t *p);
 int	polar_set_radius(Polar_t *p, double radius);

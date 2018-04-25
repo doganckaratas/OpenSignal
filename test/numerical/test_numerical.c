@@ -11,16 +11,17 @@
 #include "polar.h"
 #include "complex.h"
 #include "matrix.h"
+#include "vector.h"
 
 int main()
 {
 #ifdef COMPLEX_TEST
-	Complex_t *c = complex();
+	Complex_t *c = complex_new();
 	printf("Uninitialized Complex_t *c = \n");
 	complex_print(c);
 	printf("\n");
 
-	complex_init(c, 3, 44);
+	complex_set(c, 3, 44);
 	printf("\nInitialized Complex_t *c = \n");
 	complex_print(c);
 	printf("\n");
@@ -30,16 +31,16 @@ int main()
 	complex_print(c);
 	printf("\n");
 
-	Complex_t *c_new = complex();
-	complex_init(c_new, 0, 0);
+	Complex_t *c_new = complex_new();
+	complex_set(c_new, 0, 0);
 
 	printf("\nComparing c(3,90) == c_new(0,0) -> %d\n\n", complex_compare(c, c_new));
 	complex_delete(c);
 #endif /* COMPLEX_TEST */
 
 #ifdef POLAR_TEST
-	Polar_t *p = polar();
-	polar_init(p, 2, 4);
+	Polar_t *p = polar_new();
+	polar_set(p, 2, 4);
 	printf("Initialized Polar_t *p = \n");
 	polar_print(p);
 	printf("\n");
@@ -47,16 +48,16 @@ int main()
 #endif /* POLAR_TEST */
 
 #if defined(COMPLEX_TEST) && defined(POLAR_TEST)
-	Polar_t *p_new = polar();
-	polar_init(p_new, 0, 0);
+	Polar_t *p_new = polar_new();
+	polar_set(p_new, 0, 0);
 	complex_set_real(c_new, sqrt(2)/2);
 	complex_set_imag(c_new, sqrt(2)/2);
 	complex_to_polar(c_new, p_new);
 
 	printf("\nComplex %lf + %lfi = Polar %lf|%lf * PI (rad)\n",c_new->real, c_new->imag, p_new->radius, p_new->angle/M_PI);
 
-	complex_init(c_new, 0, 0);
-	polar_init(p_new, 5, 0.6457242582897); /* 5|37 */
+	complex_set(c_new, 0, 0);
+	polar_set(p_new, 5, 0.6457242582897); /* 5|37 */
 	polar_to_complex(p_new, c_new);
 
 	printf("Complex %lf + %lfi = Polar %lf|%lf * PI (rad)\n\n",c_new->real, c_new->imag, p_new->radius, p_new->angle/M_PI);
@@ -155,8 +156,16 @@ int main()
 	printf("\nRetransposed:\n");
 	matrix_print(m_trans);
 	matrix_delete(m_trans);
+	printf("\n");
 #endif /* MATRIX_TRANSPOSE_TEST */
-
 #endif /* MATRIX_TEST */
+
+#ifdef VECTOR_TEST
+	printf("Vector v init\n");
+	Vector_t *v = vector_new();
+	printf("Vector v delete\n");
+	vector_delete(v);
+
+#endif /* VECTOR_TEST */
 	return 0;
 }

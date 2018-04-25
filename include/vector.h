@@ -5,8 +5,8 @@
 #ifndef __VECTOR_H
 #define __VECTOR_H
 
-#if 0
 Vector_t * vector_new(void);
+#if 0
 int	vector_size(Vector_t *v, int num, int orientation);
 int	vector_get_elem(Vector_t *v, int num);
 int	vector_set_elem(Vector_t *v, int num);
@@ -17,5 +17,6 @@ int	vector_add(Vector_t *v1, Vector_t *v2);
 int	vector_subtract(Vector_t *v1, Vector_t *v2);
 int	vector_multiply(Vector_t *v1, Vector_t *v2);
 #endif
+int	vector_delete(Vector_t *v);
 
 #endif /* __VECTOR_H */

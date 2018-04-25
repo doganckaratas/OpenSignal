@@ -9,12 +9,12 @@
 #include "common.h"
 #include "polar.h"
 
-Polar_t* polar(void)
+Polar_t* polar_new(void)
 {
 	return (Polar_t *) malloc(sizeof(Polar_t));
 }
 
-int polar_init(Polar_t *p, double radius, double angle)
+int polar_set(Polar_t *p, double radius, double angle)
 {
 	if (p == NULL) {
 		return -1;

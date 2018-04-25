@@ -10,12 +10,12 @@
 #include "common.h"
 #include "complex.h"
 
-Complex_t* complex(void)
+Complex_t* complex_new(void)
 {
 	return (Complex_t *) malloc(sizeof(Complex_t));
 }
 
-int complex_init(Complex_t *c, double i, double j)
+int complex_set(Complex_t *c, double i, double j)
 {
 	if (c == NULL) {
 		return -1;
