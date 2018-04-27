@@ -5,6 +5,8 @@
 #ifndef __COMPLEX_H
 #define __COMPLEX_H
 
+#include "common.h"
+
 Complex_t* complex_new(void);
 int	complex_set(Complex_t *c, double i, double j);
 double	complex_get_real(Complex_t *c);

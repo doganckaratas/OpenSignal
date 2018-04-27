@@ -5,6 +5,8 @@
 #ifndef __VECTOR_H
 #define __VECTOR_H
 
+#include "common.h"
+
 Vector_t * vector_new(void);
 #if 0
 int	vector_size(Vector_t *v, int num, int orientation);

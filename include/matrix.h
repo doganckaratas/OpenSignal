@@ -5,6 +5,8 @@
 #ifndef __MATRIX_H
 #define __MATRIX_H
 
+#include "common.h"
+
 Matrix_t* matrix_new(void);
 int	matrix_size(Matrix_t *m, int row, int col);
 int	matrix_set_cell(Matrix_t *m, int row, int col, double data);

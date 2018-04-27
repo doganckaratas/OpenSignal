@@ -6,7 +6,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "common.h"
 #include "matrix.h"
 
 Matrix_t* matrix_new(void)
