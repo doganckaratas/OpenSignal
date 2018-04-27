@@ -64,5 +64,43 @@ int test_matrix()
 	matrix_size(m_eye, 3, 3);
 	printf("\nIdentity Matrix I[3x3] =\n");
 #endif /* MATRIX_IDENTITY_TEST */
+
+#ifdef MATRIX_COPY_TEST
+	Matrix_t *m_orig = matrix_new();
+	Matrix_t *m_copy = matrix_new();
+	matrix_size(m_orig, 3, 3);
+	matrix_set_cell(m_orig, 1, 1, 2);
+	matrix_set_cell(m_orig, 2, 2, -2);
+	matrix_set_cell(m_orig, 3, 3, 2);
+	printf("\nMatrix m_orig [3x3] =\n");
+	matrix_print(m_orig);
+	printf("\nCopied m_copy[3x3] :\n");
+	matrix_copy(m_orig, m_copy);
+	matrix_print(m_copy);
+	matrix_delete(m_copy);
+	matrix_delete(m_orig);
+#endif /* MATRIX_COPY_TEST */
+
+#ifdef MATRIX_TRANSPOSE_TEST
+	Matrix_t *m_trans = matrix_new();
+	printf("\nNormal 2x3:\n");
+	matrix_size(m_trans, 2, 3);
+	matrix_set_cell(m_trans, 1, 1, 1);
+	matrix_set_cell(m_trans, 1, 2, 2);
+	matrix_set_cell(m_trans, 1, 3, 3);
+	matrix_set_cell(m_trans, 2, 1, 4);
+	matrix_set_cell(m_trans, 2, 2, 5);
+	matrix_set_cell(m_trans, 2, 3, 6);
+
+	matrix_print(m_trans);
+	printf("\nTransposed 2x3:\n");
+	matrix_transpose(m_trans);
+	matrix_print(m_trans);
+	matrix_transpose(m_trans);
+	printf("\nRetransposed:\n");
+	matrix_print(m_trans);
+	matrix_delete(m_trans);
+#endif /* MATRIX_TRANSPOSE_TEST */
+
 	return 0;
 }

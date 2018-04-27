@@ -7,7 +7,6 @@
 #include <string.h>
 #include <math.h>
 
-#include "common.h"
 #include "polar.h"
 #include "complex.h"
 #include "matrix.h"
