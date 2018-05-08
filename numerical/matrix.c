@@ -56,12 +56,12 @@ int matrix_get_cell(Matrix_t* m, int row, int col, double *data)
 #if 0
 int matrix_set_row(Matrix_t *m, int row, Vector_t *v)
 {
-
+	/* if matrix is vertical, deny it */
 }
 
 int matrix_set_col(Matrix_t *m, int col, Vector_t *v)
 {
-
+	/* if matrix is horizontal, deny it */
 }
 
 int matrix_get_row(Matrix_t *m, int row, Vector_t *v)
@@ -187,7 +187,7 @@ int matrix_transpose(Matrix_t *m)
 	return 0;
 }
 #if 0
-int matrix_to_vector(Matrix_t *m, int orientation, int n, Vector_t *v)
+int matrix_to_vector_slice(Matrix_t *m, enum vector_shape shape, int n, Vector_t *v)
 {
 
 }

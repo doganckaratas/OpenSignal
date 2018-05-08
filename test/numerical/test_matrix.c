@@ -36,6 +36,30 @@ int test_matrix()
 	matrix_delete(m);
 #endif /* MATRIX_BASIC_TEST */
 
+#ifdef MATRIX_ARRAY_TEST
+	/* Group these declarations as functions */
+	Matrix_t *marr[3] = { matrix_new(), matrix_new(), matrix_new() };
+	printf("\nCreated Matrix Array marr[3]\n");
+	matrix_size(marr[0], 3, 3);
+	matrix_size(marr[1], 3, 3);
+	matrix_size(marr[2], 3, 3);
+
+	matrix_zeros(marr[0]);
+	matrix_ones(marr[1]);
+	matrix_identity(marr[2]);
+
+	printf("marr[0] is zeros()\n");
+	matrix_print(marr[0]);
+	printf("\nmarr[1] is ones()\n");
+	matrix_print(marr[1]);
+	printf("\nmarr[2] is identity\n");
+	matrix_print(marr[2]);
+
+	matrix_delete(marr[0]);
+	matrix_delete(marr[1]);
+	matrix_delete(marr[2]);
+#endif /* MATRIX_ARRAY_TEST */
+
 #ifdef MATRIX_COMPARE_TEST
 	Matrix_t *m_cmp = matrix_new();
 	matrix_size(m_cmp, 3, 3);
@@ -62,6 +86,7 @@ int test_matrix()
 #ifdef MATRIX_IDENTITY_TEST
 	Matrix_t *m_eye = matrix_new();
 	matrix_size(m_eye, 3, 3);
+	matrix_identity(m_eye);
 	printf("\nIdentity Matrix I[3x3] =\n");
 #endif /* MATRIX_IDENTITY_TEST */
 

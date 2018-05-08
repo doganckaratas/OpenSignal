@@ -127,6 +127,22 @@ int	vector_multiply(Vector_t *v1, Vector_t *v2)
 {
 
 }
+
+int     vector_to_matrix(Vector_t **v, Matrix_t *m)
+{
+        /* This function relies to vector arrays */
+        /* refer to matrix array */
+}
+
+int     vector_copy(Vector_t *v1, Vector_t *v2)
+{
+
+}
+
+int     vector_print(Vector_t *v)
+{
+
+}
 #endif
 int     vector_delete(Vector_t *v)
 {
