@@ -27,7 +27,7 @@ typedef struct Matrix_s {
 
 typedef struct Vector_s {
 	int size;
-	int orientation; /* needs to be anonymous ENUM */
+	int shape; /* needs to be anonymous ENUM */
 	double *data;
 } Vector_t;
 

@@ -21,6 +21,7 @@ int matrix_size(Matrix_t *m, int row, int col)
 	m->rows = row;
 	m->cols = col;
 	m->data = malloc(sizeof(double) * row * col + 1);
+
 	if (m->data == NULL) {
 		return -1;
 	}
@@ -94,6 +95,7 @@ int matrix_ones(Matrix_t *m)
 	if (m->data == NULL || m == NULL) {
 		return -1;
 	}
+
 	for (i = 1; i <= m->rows; i++) {
 		for (j = 1; j <= m->cols; j++) {
 			matrix_set_cell(m, i, j, 1);
@@ -137,6 +139,7 @@ int matrix_copy(Matrix_t *m1, Matrix_t *m2)
 	}
 
 	matrix_size(m2, m1->rows, m1->cols);
+	/* exceeds 80 line */
 	memcpy(m2->data, m1->data, sizeof(double) * (size_t)(m1->rows * m1->cols));
 
 	if (m2->data == NULL) {
@@ -206,6 +209,7 @@ int matrix_print(Matrix_t *m)
 	if (m->data == NULL || m == NULL) {
 		return -1;
 	}
+
 	for (i = 1; i <= m->rows; i++) {
 		for (j = 1; j <= m->cols; j++) {
 			matrix_get_cell(m, i, j, &data);
