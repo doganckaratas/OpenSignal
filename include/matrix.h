@@ -17,6 +17,7 @@ int	matrix_set_col(Matrix_t *m, int col, Vector_t *v);
 int	matrix_get_row(Matrix_t *m, int row, Vector_t *v);
 int	matrix_get_col(Matrix_t *m, int col, Vector_t *v);
 #endif
+int	matrix_set_all(Matrix_t *m, double data);
 int	matrix_zeros(Matrix_t *m);
 int	matrix_ones(Matrix_t *m);
 int	matrix_print(Matrix_t *m);

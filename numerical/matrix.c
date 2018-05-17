@@ -74,7 +74,7 @@ int matrix_get_col(Matrix_t *m, int col, Vector_t *v)
 
 }
 #endif
-int matrix_zeros(Matrix_t *m)
+int matrix_set_all(Matrix_t *m, double data)
 {
 	int i = 0, j = 0;
 	if (m->data == NULL || m == NULL) {
@@ -83,24 +83,29 @@ int matrix_zeros(Matrix_t *m)
 
 	for (i = 1; i <= m->rows; i++) {
 		for (j = 1; j <= m->cols; j++) {
-			matrix_set_cell(m, i, j, 0);
+			matrix_set_cell(m, i, j, data);
 		}
 	}
 	return 0;
 }
 
-int matrix_ones(Matrix_t *m)
+int matrix_zeros(Matrix_t *m)
 {
-	int i = 0, j = 0;
 	if (m->data == NULL || m == NULL) {
 		return -1;
 	}
 
-	for (i = 1; i <= m->rows; i++) {
-		for (j = 1; j <= m->cols; j++) {
-			matrix_set_cell(m, i, j, 1);
-		}
+	matrix_set_all(m, 0);
+	return 0;
+}
+
+int matrix_ones(Matrix_t *m)
+{
+	if (m->data == NULL || m == NULL) {
+		return -1;
 	}
+
+	matrix_set_all(m, 1);
 	return 0;
 }
 

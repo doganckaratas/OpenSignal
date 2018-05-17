@@ -17,13 +17,16 @@ int test_vector()
 	Vector_t *v = vector_new();
 	printf("\nVector v init\n");
 	vector_size(v, 3, SHAPE_HORIZ);
-	printf("\nv = Vector(3,SHAPE_HORIZ) , v->size = %d v->shape = %d\n", v->size, v->shape);
+	printf("v = Vector(3,SHAPE_HORIZ) , v->size = %d v->shape = %d\n", v->size, v->shape);
+	printf("\nvector_ones(v) : \n");
 	vector_ones(v);
-	printf("\n%lf %lf %lf\n", *(v->data), *(v->data + 1), *(v->data+2));
+	vector_print(v);
+	printf("\nvector_zeros(v) : \n");
 	vector_zeros(v);
-	printf("\n%lf %lf %lf\n", *(v->data), *(v->data + 1), *(v->data+2));
+	vector_print(v);
+	printf("\nvector_set_all(v, -25) : \n");
 	vector_set_all(v, -25);
-	printf("\n%lf %lf %lf\n", *(v->data), *(v->data + 1), *(v->data+2));
+	vector_print(v);
 	vector_delete(v);
 	printf("\nVector v delete\n");
 #endif

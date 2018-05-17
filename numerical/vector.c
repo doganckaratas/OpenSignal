@@ -138,12 +138,24 @@ int     vector_copy(Vector_t *v1, Vector_t *v2)
 {
 
 }
-
+#endif
 int     vector_print(Vector_t *v)
 {
+	int i = 0;
+	double data = 0;
+	if (v == NULL || v->data == NULL) {
+		return -1;
+	}
 
+	printf("<");
+	for (i = 1; i <= v->size; i++) {
+		vector_get_elem(v, i, &data);
+		printf("%.3lf ", data);
+	}
+	printf(">\n");
+	return 0;
 }
-#endif
+
 int     vector_delete(Vector_t *v)
 {
         if (v == NULL || v->data == NULL) {
