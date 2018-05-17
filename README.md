@@ -1,4 +1,4 @@
-# OpenSignal-ADR Repository
+# OpenSignal Project
 
 ## Maintainer
 
