@@ -7,10 +7,10 @@
 #include <string.h>
 #include <math.h>
 
-#include "polar.h"
-#include "complex.h"
-#include "matrix.h"
-#include "vector.h"
+#include "numerical/polar.h"
+#include "numerical/complex.h"
+#include "numerical/matrix.h"
+#include "numerical/vector.h"
 
 #include "test_numerical.h"
 

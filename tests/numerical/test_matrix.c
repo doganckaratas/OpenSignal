@@ -7,7 +7,7 @@
 #include <string.h>
 #include <math.h>
 
-#include "matrix.h"
+#include "numerical/matrix.h"
 
 #include "test_numerical.h"
 

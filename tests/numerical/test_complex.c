@@ -7,8 +7,8 @@
 #include <string.h>
 #include <math.h>
 
-#include "complex.h"
-#include "polar.h"
+#include "numerical/complex.h"
+#include "numerical/polar.h"
 
 #include "test_numerical.h"
 

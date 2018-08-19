@@ -7,7 +7,7 @@
 #include <string.h>
 #include <math.h>
 
-#include "vector.h"
+#include "numerical/vector.h"
 
 #include "test_numerical.h"
 

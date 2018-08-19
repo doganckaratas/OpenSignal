@@ -6,7 +6,7 @@
 #include <stdlib.h>
 #include <math.h>
 
-#include "polar.h"
+#include "numerical/polar.h"
 
 Polar_t* polar_new(void)
 {

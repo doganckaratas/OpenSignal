@@ -6,7 +6,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "vector.h"
+#include "numerical/vector.h"
 
 Vector_t * vector_new(void)
 {

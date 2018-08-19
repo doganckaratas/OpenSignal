@@ -7,7 +7,7 @@
 #include <stdlib.h>
 #include <math.h>
 
-#include "complex.h"
+#include "numerical/complex.h"
 
 Complex_t* complex_new(void)
 {
