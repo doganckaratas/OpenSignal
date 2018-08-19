@@ -2,32 +2,23 @@
 # Numerical Library Makefile
 # Dogan C. Karatas | 2018 | GNU GPL v3
 
-TARGET = libnumerical.so
-INSTALL = ../_install
-CC = gcc
-CFLAGS = -I../include -g -Wall -Wextra -Werror -fpic
-LDFLAGS = -lm -shared
-
-SRCS = $(wildcard *.c)
-OBJS = $(SRCS:.c=.o)
+CC=gcc
+CFLAGS_LIB=-I../include -Wall -Werror -Wextra -pedantic -g -ggdb -O0 -fpic
+SRCS_LIB=$(wildcard *.c)
+OBJS_LIB=$(SRCS_LIB:.c=.o)
+DEPS_LIB=$(OBJS_LIB:.o=.d)
 
 .PHONY: all
-all: ${TARGET}
+all:	$(OBJS_LIB)
 
-$(SRCS:.c=.d):%.d:%.c
-	$(CC) $(CFLAGS) -MM $< >$@
+$(DEPS_LIB): %.d:%.c
+	$(CC) $(CFLAGS_LIB) -MM $< >$@
 
-$(TARGET): $(OBJS)
-	$(CC) -o $@ $^ $(LDFLAGS)
+$(OBJS_LIB): $(SRCS_LIB)
+	$(CC) $(CFLAGS_LIB) -c $^
 
--include $(SRCS:.c=.d)
-
-.PHONY: install
-install: all
-	$(shell if [ ! -d ${INSTALL} ];	then mkdir ${INSTALL}; fi;)
-	cp -f ${TARGET} ${INSTALL}/${TARGET}
+-include $(DEPS_LIB)
 
 .PHONY: clean
 clean:
-	rm -f ${TARGET} ${OBJS} $(SRCS:.c=.d)
-	rm -f ./${INSTALL}/${TARGET}
+	rm -rf $(OBJS_LIB) $(DEPS_LIB)
