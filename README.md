@@ -21,3 +21,5 @@ Project is developed using C Language, but I've tried to write it as clean and r
 - 27/04/2018 : Major milestone for aiming the test-driven programming approach
 
 - 18/05/2018 : Working on numerical library, nearly 25% of work in here already done.
+
+- 19/08/2018 : Makefiles modularized, this will help us to maintain newly added modules easily.
