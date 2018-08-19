@@ -34,6 +34,7 @@ tests:	$(TARGET_TEST_NUMERICAL)
 clean:
 	$(MAKE) -C ./numerical clean V=1
 	$(MAKE) -C ./test/numerical clean V=1
+	find -name '*.gch' -delete
 	rm -rf $(TARGET_LIB)
 	rm -rf $(TARGET_TEST_NUMERICAL)
 	rm -rf $(INSTALL)
