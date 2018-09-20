@@ -6,7 +6,9 @@ INSTALL=_install
 CC=gcc
 MAKE=make
 
-TARGET_LIB=libopensignal.so
+BUILD_DIR=./build
+
+TARGET_LIB=$(BUILD_DIR)/libopensignal.so
 CFLAGS_LIB=-I./include -g -ggdb -O0
 LDFLAGS_LIB=-lm -shared
 SRCS_LIB+=$(wildcard ./numerical/*.c)
@@ -14,12 +16,12 @@ SRCS_LIB+=$(wildcard ./machlearn/*.c)
 OBJS_LIB=$(SRCS_LIB:.c=.o)
 DEPS_LIB=$(OBJS_LIB:.o=.d)
 
-TARGET_TEST_NUMERICAL=test_numerical
+TARGET_TEST_NUMERICAL=$(BUILD_DIR)/test_numerical
 SRCS_TEST_NUMERICAL=$(wildcard ./tests/numerical/*.c)
 OBJS_TEST_NUMERICAL=$(SRCS_TEST_NUMERICAL:.c=.o)
 DEPS_TEST_NUMERICAL=$(OBJS_TEST_NUMERICAL:.o=.d)
 CFLAGS_TEST_NUMERICAL=-I./include -g -ggdb -O0
-LDFLAGS_TEST_NUMERICAL=-L.
+LDFLAGS_TEST_NUMERICAL=-L${BUILD_DIR}/.
 LIBS_TEST_NUMERICAL=-lm -lopensignal
 
 .PHONY: lib
@@ -40,6 +42,7 @@ clean:
 	rm -rf $(TARGET_LIB)
 	rm -rf $(TARGET_TEST_NUMERICAL)
 	rm -rf $(INSTALL)
+	rm -rf $(BUILD_DIR)
 
 .PHONY: install
 install: all
@@ -48,11 +51,13 @@ install: all
 	cp -frv $(TARGET_TEST_NUMERICAL) $(INSTALL)
 
 $(TARGET_LIB): 
+	mkdir -p ${BUILD_DIR}
 	$(MAKE) -C numerical all V=1
 	$(MAKE) -C machlearn all V=1
 	$(CC) $(CFLAGS_LIB) -o $@ ${OBJS_LIB} $(LDFLAGS_LIB) 
 
 $(TARGET_TEST_NUMERICAL): 
+	mkdir -p ${BUILD_DIR}
 	$(MAKE) -C tests/numerical all V=1
 	$(CC) $(CFLAGS_TEST_NUMERICAL) -o $@ ${OBJS_TEST_NUMERICAL} $(LDFLAGS_TEST_NUMERICAL) $(LIBS_TEST_NUMERICAL) 
 
