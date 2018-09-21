@@ -144,12 +144,39 @@ int	vector_add(Vector_t *v1, Vector_t *v2)
 
 	return 0;
 }
-#if 0
+
 int	vector_subtract(Vector_t *v1, Vector_t *v2)
 {
+	enum vector_shape shape1 = 0, shape2 = 0;
+	int i = 0;
+	double data1 = 0, data2 = 0;
+	if (v1 == NULL || v2 == NULL) {
+		return -1;
+	}
 
+	if (v1->data == NULL || v2->data == NULL) {
+		return -2;
+	}
+
+	vector_get_shape(v1, &shape1);
+	vector_get_shape(v2, &shape2);
+	if (shape1 != shape2) {
+		return -3;
+	}
+
+	if (v1->size != v2->size) {
+		return -4;
+	}
+
+	for (i = 1; i <= v1->size; i++) {
+		vector_get_elem(v1, i, &data1);
+		vector_get_elem(v2, i, &data2);
+		vector_set_elem(v1, i, data1 - data2);
+	}
+
+	return 0;
 }
-
+#if 0
 int	vector_multiply(Vector_t *v1, Vector_t *v2)
 {
 

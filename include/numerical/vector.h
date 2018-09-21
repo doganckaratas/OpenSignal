@@ -28,8 +28,8 @@ int	vector_to_scalar(Vector_t *v, double *scalar, enum vector_shape shape);
 int	vector_set_orientation(Vector_t *v, int orientation);
 #endif
 int	vector_add(Vector_t *v1, Vector_t *v2);
-#if 0
 int	vector_subtract(Vector_t *v1, Vector_t *v2);
+#if 0
 int	vector_multiply(Vector_t *v1, Vector_t *v2);
 #endif
 int	vector_print(Vector_t *v);
