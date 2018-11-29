@@ -9,8 +9,8 @@
 
 Complex_t* complex_new(void);
 int	complex_set(Complex_t *c, double i, double j);
-double	complex_get_real(Complex_t *c);
-double	complex_get_imag(Complex_t *c);
+int	complex_get_real(Complex_t *c, double *i);
+int	complex_get_imag(Complex_t *c, double *j);
 int	complex_set_real(Complex_t *c, double i);
 int	complex_set_imag(Complex_t *c, double j);
 int	complex_compare(Complex_t *c1, Complex_t *c2);

@@ -24,20 +24,24 @@ int complex_set(Complex_t *c, double i, double j)
 	return 0;
 }
 
-double complex_get_real(Complex_t *c)
+int complex_get_real(Complex_t *c, double *i)
 {
 	if (c == NULL) {
-		return 0;
+		return -1;
 	}
-	return c->real;
+
+	*i = c->real;
+	return 0;
 }
 
-double complex_get_imag(Complex_t *c)
+int complex_get_imag(Complex_t *c, double *j)
 {
 	if (c == NULL) {
-		return 0;
+		return -1;
 	}
-	return c->imag;
+
+	*j = c->imag;
+	return 0;
 }
 
 int complex_set_real(Complex_t *c, double i)
@@ -68,12 +72,30 @@ int complex_set_imag(Complex_t *c, double j)
 */
 int complex_compare(Complex_t *c1, Complex_t *c2)
 {
+	double c1_i = 0.0, c1_j = 0.0;
+	double c2_i = 0.0, c2_j = 0.0;
+
 	if (c1 == NULL || c2 == NULL) {
 		return -1;
 	}
 
-	if (complex_get_real(c1) == complex_get_real(c2) &&
-		complex_get_imag(c1) == complex_get_imag(c2)) {
+	if (complex_get_real(c1, &c1_i) < 0) {
+		return -1;
+	}
+
+	if (complex_get_imag(c1, &c1_j) < 0) {
+		return -1;
+	}
+
+	if (complex_get_real(c2, &c2_i) < 0) {
+		return -1;
+	}
+
+	if (complex_get_imag(c2, &c2_j) < 0) {
+		return -1;
+	}
+
+	if (c1_i == c2_i && c1_j == c2_j) {
 		return 0;
 	} else {
 		return 1;
@@ -82,23 +104,43 @@ int complex_compare(Complex_t *c1, Complex_t *c2)
 
 int complex_to_polar(Complex_t *c, Polar_t *p)
 {
+	double i = 0.0, j = 0.0;
+
 	if (c == NULL || p == NULL) {
 		return -1;
 	}
 
-	p->radius = sqrt(pow(complex_get_real(c), 2) + pow(complex_get_imag(c), 2));
-	p->angle = atan2(complex_get_imag(c), complex_get_real(c));
+	if (complex_get_real(c, &i) < 0) {
+		return -1;
+	}
+
+	if (complex_get_imag(c, &j) < 0) {
+		return -1;
+	}
+
+	p->radius = sqrt(pow(i, 2) + pow(j, 2));
+	p->angle = atan2(j, i);
 
 	return 0;
 }
 
 int complex_print(Complex_t *c)
 {
+	double i = 0.0, j = 0.0;
+
 	if (c == NULL) {
 		return -1;
 	}
 
-	printf("%lf + %lfi", complex_get_real(c), complex_get_imag(c));
+	if (complex_get_real(c, &i) < 0) {
+		return -1;
+	}
+
+	if (complex_get_imag(c, &j) < 0) {
+		return -1;
+	}
+
+	printf("%lf + %lfi", i, j);
 	return 0;
 }
 
